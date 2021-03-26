@@ -15,7 +15,7 @@ const initialState: ILang = {
     {key: 'en', value:'English'},
     {key: 'ru', value:'Русский'},
   ],
-  selectedItem:1,
+  selectedItem: 0,
 }
 
 const langSlice = createSlice({

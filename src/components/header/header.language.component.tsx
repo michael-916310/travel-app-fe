@@ -9,22 +9,24 @@ import Menu from '@material-ui/core/Menu';
 
 import LanguageIcon from '@material-ui/icons/Language';
 
-const options = [
-  {key: 'en', value:'English'},
-  {key: 'ru', value:'Русский'},
-];
+import {useAppSelector, useAppDispatch} from './../../store/hooks';
+import {setLangAC} from './../../store/langSlice';
 
 function LanguageList() {
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const list = useAppSelector((store) => {return store.lang.list});
+  const selectedItem = useAppSelector((store) => {return store.lang.selectedItem});
+
+  const dispatch = useAppDispatch();
 
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
-    setSelectedIndex(index);
+    dispatch(setLangAC(index));
     setAnchorEl(null);
   };
 
@@ -33,8 +35,8 @@ function LanguageList() {
   };
 
   const nameByIndex = (index: number) => {
-    if (index <= options.length && index >= 0) {
-      return options[index].value;
+    if (index <= list.length && index >= 0) {
+      return list[index].value;
     }
     return '';
   }
@@ -46,7 +48,7 @@ function LanguageList() {
           button
           onClick={handleClickListItem}
         >
-          <ListItemText primary={nameByIndex(selectedIndex)} />
+          <ListItemText primary={nameByIndex(selectedItem)} />
           <ListItemIcon>
             <LanguageIcon fontSize="large"/>
           </ListItemIcon>
@@ -58,10 +60,10 @@ function LanguageList() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {options.map((option, index) => (
+        {list.map((option, index) => (
           <MenuItem
             key={option.key}
-            selected={index === selectedIndex}
+            selected={index === selectedItem}
             onClick={(event) => handleMenuItemClick(event, index)}
           >
             {nameByIndex(index)}

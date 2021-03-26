@@ -7,7 +7,7 @@ import MainPage from './pages/mainPage.component';
 function App() {
   return (
     <div className="App">
-      <MainPage></MainPage>
+      <MainPage/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
