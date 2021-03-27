@@ -48,7 +48,7 @@ function LanguageList() {
           button
           onClick={handleClickListItem}
         >
-          <ListItemText primary={nameByIndex(selectedItem)} />
+          <ListItemText primary={nameByIndex(selectedItem)} style={{display:"flex", justifyContent: "flex-end"}} />
           <ListItemIcon>
             <LanguageIcon fontSize="large"/>
           </ListItemIcon>
