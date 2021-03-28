@@ -22,7 +22,8 @@ function LanguageList() {
   const dispatch = useAppDispatch();
 
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    //setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget.firstElementChild as HTMLElement);
   };
 
   const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
@@ -42,15 +43,23 @@ function LanguageList() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <List>
         <ListItem
           button
           onClick={handleClickListItem}
+          style = {{justifyContent:"center"}}
         >
-          <ListItemText primary={nameByIndex(selectedItem)} style={{display:"flex", justifyContent: "flex-end"}} />
-          <ListItemIcon>
-            <LanguageIcon fontSize="large"/>
+          <ListItemText
+            primary={nameByIndex(selectedItem)}
+            //onClick={handleClickListItem}
+            style={{flexGrow:0}}
+          />
+          <ListItemIcon
+            style={{minWidth:"35px"}}
+          >
+            <LanguageIcon
+              fontSize="large"/>
           </ListItemIcon>
 
         </ListItem>
@@ -70,7 +79,7 @@ function LanguageList() {
           </MenuItem>
         ))}
       </Menu>
-    </div>
+    </React.Fragment>
   );
 }
 

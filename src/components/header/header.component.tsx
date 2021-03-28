@@ -12,6 +12,7 @@ const useStyle = makeStyles((theme:Theme) =>
   createStyles({
     container: {
       background: theme.palette.background.paper,
+      minHeight:"4rem",
     },
     logoLink: {
       display: "flex",
@@ -33,7 +34,7 @@ function Header(){
   return (
     <Container component="header" maxWidth="md" className={classes.container}>
       <Grid container justify="space-between" alignItems="center">
-        <Grid item xs={12} sm={2} style={{border:'1px dotted grey'}}>
+        <Grid item xs={12} sm={2}>
           <Link
             href='/'
             rel="noreferrer"
@@ -42,10 +43,10 @@ function Header(){
             <img src={logoIcon} alt="logo" />
           </Link>
         </Grid>
-        <Grid item xs={12} sm={7} style={{border:'1px dotted grey'}}>
+        <Grid item xs={12} sm={7} style={{border:'1px dotted grey', minHeight:"3rem"}}>
           <input type="text"/>
         </Grid>
-        <Grid item xs={12} sm={3} style={{border:'1px dotted grey'}}>
+        <Grid item xs={12} sm={3}>
           <LanguageList/>
         </Grid>
       </Grid>
