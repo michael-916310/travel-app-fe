@@ -4,6 +4,7 @@ import LanguageList from './header.language.component';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import TextField from '@material-ui/core/TextField';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import logoIcon from './around.svg';
@@ -43,8 +44,13 @@ function Header(){
             <img src={logoIcon} alt="logo" />
           </Link>
         </Grid>
-        <Grid item xs={12} sm={7} style={{border:'1px dotted grey', minHeight:"3rem"}}>
-          <input type="text"/>
+        <Grid item xs={12} sm={7} style={{display:"flex"}}>
+          <TextField
+            label="Country search"
+            type="search"
+            //variant="filled"
+            variant="outlined"
+            style={{marginLeft:"auto", marginRight:"auto"}} />
         </Grid>
         <Grid item xs={12} sm={3}>
           <LanguageList/>

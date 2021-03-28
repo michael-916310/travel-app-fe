@@ -1,10 +1,9 @@
-import React from 'react-dom';
+import React from 'react';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import { findByLabelText } from '@testing-library/dom';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
