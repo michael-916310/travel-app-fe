@@ -44,11 +44,10 @@ function Header(){
             <img src={logoIcon} alt="logo" />
           </Link>
         </Grid>
-        <Grid item xs={12} sm={7} style={{display:"flex"}}>
+        <Grid item xs={12} sm={7} style={{display:"flex", padding:"15px 5px"}}>
           <TextField
             label="Country search"
             type="search"
-            //variant="filled"
             variant="outlined"
             style={{marginLeft:"auto", marginRight:"auto"}} />
         </Grid>
