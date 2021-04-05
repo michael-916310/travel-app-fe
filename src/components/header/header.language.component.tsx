@@ -22,7 +22,6 @@ function LanguageList() {
   const dispatch = useAppDispatch();
 
   const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    //setAnchorEl(event.currentTarget);
     setAnchorEl(event.currentTarget.firstElementChild as HTMLElement);
   };
 

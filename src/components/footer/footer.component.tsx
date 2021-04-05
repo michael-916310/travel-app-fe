@@ -55,7 +55,7 @@ export default function Footer(){
   const classes = useStyles();
 
   return (
-    <Container component="footer" maxWidth="md" className={classes.container}>
+    <Container component="footer" maxWidth="lg" className={classes.container}>
       <Grid container justify="center" alignItems="center" className={classes.grid}>
         <Grid item xs={12} sm={4}>
           <Grid container className={classes.author}>

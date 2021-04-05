@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import langReducer from './langSlice';
+import countryList from './countryListSlice';
 
 const store = configureStore({
   reducer: {
     lang: langReducer,
+    countryList,
   },
 });
 

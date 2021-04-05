@@ -1,3 +1,6 @@
+import {dispatch} from './../store/hooks';
+import {setCountryListAC} from './../store/countryListSlice';
+
 const baseURL: string = 'https://michael-916310-travel-app-be.herokuapp.com';
 
 function loadURL(url:string, callbackAr:{(data:any):void}[]){
@@ -12,7 +15,7 @@ function loadURL(url:string, callbackAr:{(data:any):void}[]){
   }
 
   if (sessionStorage.getItem(url)) {
-    result = sessionStorage.getItem(url);
+    result = JSON.parse(sessionStorage.getItem(url) || '');
     callback();
   } else {
     fetch(url)
@@ -27,7 +30,19 @@ function loadURL(url:string, callbackAr:{(data:any):void}[]){
 
 }
 
-export function init(){
-  loadURL(`${baseURL}/countries`,[]);
+function loadCountryList(data: any) {
+  let arr=data.map((item:any) => {
+    return {
+      id: item.id,
+      capital: item.capital,
+      countryName: item.name,
+      imageUrl: item.imageUrl,
+      description: item.description,
+    }
+  });
+  dispatch(setCountryListAC(arr));
 }
 
+export function init(){
+  loadURL(`${baseURL}/countries`,[loadCountryList]);
+}

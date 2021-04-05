@@ -33,7 +33,7 @@ function Header(){
   const classes = useStyle();
 
   return (
-    <Container component="header" maxWidth="md" className={classes.container}>
+    <Container component="header" maxWidth="lg" className={classes.container}>
       <Grid container justify="space-between" alignItems="center">
         <Grid item xs={12} sm={2}>
           <Link
