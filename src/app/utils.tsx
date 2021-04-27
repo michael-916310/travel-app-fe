@@ -43,6 +43,13 @@ function loadCountryList(data: any) {
   dispatch(setCountryListAC(arr));
 }
 
-export function init(){
-  loadURL(`${baseURL}/countries`,[loadCountryList]);
+export function init() {
+  // закэшируем в local storage данные по странам для разных языков
+  loadURL(`${baseURL}/countries?lang=ru`,[loadCountryList]);
+  loadURL(`${baseURL}/countries?lang=en`,[loadCountryList]);
+}
+
+export function getCountryList(lang: string) {
+  // обновим redux storage из кэша
+  loadURL(`${baseURL}/countries?lang=${lang}`,[loadCountryList]);
 }
