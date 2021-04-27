@@ -10,10 +10,12 @@ interface ICountry {
 
 interface ICountryList {
   list: ICountry[],
+  filter: string,
 }
 
 const initialState: ICountryList = {
-  list:[]
+  list:[],
+  filter: '',
 }
 
 const slice = createSlice({
@@ -22,10 +24,13 @@ const slice = createSlice({
   reducers: {
     setList: (state, action: PayloadAction<Array<ICountry>>) => {
       state.list = action.payload;
+    },
+    setFilter: (state, action: PayloadAction<string>) =>{
+      state.filter = action.payload;
     }
   }
 });
 
-export const {setList: setCountryListAC} = slice.actions;
+export const {setList: setCountryListAC, setFilter: setCountryListFilterAC} = slice.actions;
 
 export default slice.reducer;

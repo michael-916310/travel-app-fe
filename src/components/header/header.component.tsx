@@ -1,14 +1,17 @@
 import React from 'react-dom';
+import {useAppSelector, useAppDispatch} from './../../store/hooks';
+
 import LanguageList from './header.language.component';
+
+import {setCountryListFilterAC} from './../../store/countryListSlice';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-
 import { fade, makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+
 import logoIcon from './around.svg';
 
 const useStyle = makeStyles((theme:Theme) =>
@@ -71,6 +74,9 @@ function Header(){
 
   const classes = useStyle();
 
+  const filterValue = useAppSelector((store)=>{return store.countryList.filter});
+  const dispatch = useAppDispatch();
+
   return (
     <Container component="header" maxWidth="lg" className={classes.container}>
       <Grid container justify="space-between" alignItems="center">
@@ -95,6 +101,8 @@ function Header(){
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              value = {filterValue}
+              onChange = {(event)=>{dispatch(setCountryListFilterAC(event.target.value))}}
             />
           </div>
         </Grid>

@@ -34,6 +34,7 @@ export default function Content(){
 
   const list = useAppSelector((store)=>{return store.countryList.list});
   const lang: string = useAppSelector((store)=>{return store.lang.list[store.lang.selectedItem].key});
+  const filterValue: string = useAppSelector((store)=>{return store.countryList.filter});
 
   const classes = useStyles();
 
@@ -46,7 +47,9 @@ export default function Content(){
   return (
     <Container component="main" maxWidth="lg" style={{paddingTop: "20px", paddingBottom:"20px"}}>
       <Grid container justify="space-evenly" alignItems="center" spacing={4}>
-        {list.map((item) => {
+        {list.filter((item)=>{
+          return item.countryName.toLowerCase().includes(filterValue.toLowerCase());
+        }).map((item) => {
 
           return (
           <Grid item>
