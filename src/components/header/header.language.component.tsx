@@ -11,6 +11,7 @@ import LanguageIcon from '@material-ui/icons/Language';
 
 import {useAppSelector, useAppDispatch} from './../../store/hooks';
 import {setLangAC} from './../../store/langSlice';
+import {setCountryListFilterAC} from './../../store/countryListSlice';
 
 function LanguageList() {
 
@@ -27,6 +28,7 @@ function LanguageList() {
 
   const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
     dispatch(setLangAC(index));
+    dispatch(setCountryListFilterAC(''));
     setAnchorEl(null);
   };
 

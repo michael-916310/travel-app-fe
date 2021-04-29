@@ -103,6 +103,7 @@ function Header(){
               inputProps={{ 'aria-label': 'search' }}
               value = {filterValue}
               onChange = {(event)=>{dispatch(setCountryListFilterAC(event.target.value))}}
+              autoFocus
             />
           </div>
         </Grid>
