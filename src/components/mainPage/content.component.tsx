@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
-import {getCountryList} from './../../app/utils';
+import { Link } from "react-router-dom";
+
+import {getCountryList, useLang} from './../../app/utils';
 
 import Container from '@material-ui/core/Container'
 import { Grid } from '@material-ui/core';
@@ -33,7 +35,8 @@ const useStyles = makeStyles({
 export default function Content(){
 
   const list = useAppSelector((store)=>{return store.countryList.list});
-  const lang: string = useAppSelector((store)=>{return store.lang.list[store.lang.selectedItem].key});
+  //const lang: string = useAppSelector((store)=>{return store.lang.list[store.lang.selectedItem].key});
+  const lang: string = useLang(useAppSelector);
   const filterValue: string = useAppSelector((store)=>{return store.countryList.filter});
 
   const classes = useStyles();
@@ -54,18 +57,20 @@ export default function Content(){
           return (
           <Grid item>
 
-            <Card className={classes.root}>
-              <CardMedia
-                className={classes.media}
-                image={item.imageUrl}
-                title="country image"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2" align="center">
-                  {item.countryName}
-                </Typography>
-              </CardContent>
-            </Card>
+            <Link to={`/country/${item.id}`}>
+              <Card className={classes.root}>
+                <CardMedia
+                  className={classes.media}
+                  image={item.imageUrl}
+                  title="country image"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2" align="center">
+                    {item.countryName}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Link>
 
           </Grid>
           )

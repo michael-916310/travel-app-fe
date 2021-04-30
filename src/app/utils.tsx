@@ -1,5 +1,6 @@
 import {dispatch} from './../store/hooks';
 import {setCountryListAC} from './../store/countryListSlice';
+import {setCountryInfoAC} from './../store/countrySlice'
 
 const baseURL: string = 'https://michael-916310-travel-app-be.herokuapp.com';
 
@@ -50,6 +51,18 @@ export function init() {
 }
 
 export function getCountryList(lang: string) {
-  // обновим redux storage из кэша
+  // обновим redux storage
   loadURL(`${baseURL}/countries?lang=${lang}`,[loadCountryList]);
+}
+
+export function getCountryInfo(id:string, lang: string){
+  //console.log(`${getCountryInfo} - id${id} - lang:${lang}`);
+  loadURL(`${baseURL}/countries/${id}?lang=${lang}`,[(data:any)=>{
+    dispatch(setCountryInfoAC(data));
+  }]);
+}
+
+// кастомный хук\селектор для получения из storage текущего языка
+export function useLang(useAppSelector: any) {
+  return useAppSelector((store: any)=>{return store.lang.list[store.lang.selectedItem].key});
 }
