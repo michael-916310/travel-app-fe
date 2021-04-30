@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
-import { Link } from "react-router-dom";
+
+import { Link as RouterLink } from "react-router-dom";
+import Link from '@material-ui/core/Link';
 
 import {getCountryList, useLang} from './../../app/utils';
 
@@ -35,7 +37,6 @@ const useStyles = makeStyles({
 export default function Content(){
 
   const list = useAppSelector((store)=>{return store.countryList.list});
-  //const lang: string = useAppSelector((store)=>{return store.lang.list[store.lang.selectedItem].key});
   const lang: string = useLang(useAppSelector);
   const filterValue: string = useAppSelector((store)=>{return store.countryList.filter});
 
@@ -55,9 +56,9 @@ export default function Content(){
         }).map((item) => {
 
           return (
-          <Grid item>
+          <Grid item key={item.id}>
 
-            <Link to={`/country/${item.id}`}>
+            <Link component={RouterLink}  underline='none' to={`/country/${item.id}`}>
               <Card className={classes.root}>
                 <CardMedia
                   className={classes.media}

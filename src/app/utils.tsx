@@ -56,7 +56,6 @@ export function getCountryList(lang: string) {
 }
 
 export function getCountryInfo(id:string, lang: string){
-  //console.log(`${getCountryInfo} - id${id} - lang:${lang}`);
   loadURL(`${baseURL}/countries/${id}?lang=${lang}`,[(data:any)=>{
     dispatch(setCountryInfoAC(data));
   }]);
